@@ -1,4 +1,14 @@
-# World Generator and Medieval Economy Simulation
+# AI-assisted Development Showcase
+
+This repository documents my approach to AI-assisted software development, using GitHub Copilot and large language models (LLMs) as tools throughout the development process.
+
+My approach combines human-driven system design, AI-assisted implementation, and critical evaluation of the results. I use AI tools to translate concepts into working software, explore implementation alternatives, investigate potential issues, and examine the plausibility and consistency of complex systems.
+
+The project presented here is a practical example of this approach. The documentation showcases the goals, design concepts, and results of a simulation developed in Unity, demonstrating how AI-assisted development can be applied to a complex system involving interconnected models, constraints, and emergent behavior.
+
+Note: This repository contains project documentation and visualizations rather than the simulation's source code. Its purpose is to showcase the project and my approach to AI-assisted development. [Further details for AI-assisted development process](#ai-assisted-development)
+
+## World Generator and Medieval Economy Simulation
 
 This project explores how geography, natural resources, transportation costs, and agricultural productivity shape settlement patterns and economic development in a simulated medieval world.
 
@@ -83,7 +93,7 @@ Wealth is influenced by the balance between production and consumption, as well 
 
 Future development will explore additional mechanisms that influence the economy and settlement dynamics.
 
-- **Maritime Transportation:** Modeling sea routes and their influence on trade, transportation costs, and the economic relationships between settlements.
+- **Maritime Transportation:** Modelling sea routes and their influence on trade, transportation costs, and the economic relationships between settlements.
 - **Extended Production Chains:** Introducing more detailed production processes, such as producing salt from brine springs using fuel. Different fuel sources will vary in availability and transportation requirements, influencing production costs and regional specialization.
 - **Baronies and Regional Administration:** Introducing baronies to address challenges associated with collecting production output from areas far away from cities, collecting tolls, and providing protection to areas beyond the reach of urban settlements.
 
@@ -114,6 +124,24 @@ Simulation rules, assumptions, and intended behavior are manually planned and re
 LLMs also serve as sparring partners for examining the plausibility and consistency of the underlying models. They help identify potential edge cases, discuss alternative approaches, and challenge assumptions about how individual mechanisms interact.
 
 AI-generated suggestions are treated as input for further evaluation rather than as authoritative answers. The aim is to combine AI-assisted implementation with deliberate system design and critical assessment of the resulting simulation.
+
+### AI-Assisted Development in Practice
+
+ChatGPT-5.6 Luna, using medium reasoning effort, was responsible for implementing most of the code in this project. Its combination of speed, capability, and low cost made it well suited for rapid iteration, allowing implementations to be revised quickly whenever the results did not meet expectations.
+
+This approach worked well for most tasks. However, several more complex challenges required additional iterations, more guidance, or higher reasoning effort:
+
+- **Directional movement costs in pathfinding:** When implementing the pathfinding system used to calculate the tiles within a city's supply range, the agent struggled to account for different movement costs when traversing river tiles upstream versus downstream. Resolving this issue required multiple prompts and iterations to make the implementation consistent with the intended movement rules.
+
+- **Road visualization:** Getting road segments to connect correctly in the visualization took several iterations. Even when provided with a screenshot of the problem, the agent struggled to identify that the underlying issue was the lack of visual continuity between adjacent road segments. This highlighted a limitation in its ability to interpret spatial relationships and diagnose visual problems from images alone.
+
+- **Performance regressions:** Some changes to existing systems introduced significant performance issues. In these cases, the revised implementations increased computational complexity by repeatedly executing expensive logic tens of thousands of times within a single frame. Identifying and resolving these issues required a better understanding of the underlying algorithms and their execution costs.
+
+- **Geographical landmark detection:** Identifying features such as natural harbours and sea straits proved challenging. The approaches suggested by the agent tended to produce one of two extremes: either too many false positives, effectively classifying large portions of the coastline as landmarks, or no detections at all. Finding a more balanced approach required further iteration and refinement of the detection criteria.
+
+These experiences demonstrated that AI-assisted development is most effective when combined with an understanding of the underlying technical problems. Switching to higher reasoning effort helped with some of the more complex challenges, while a general understanding of the algorithms made it possible to guide the agent toward more suitable solutions.
+
+In several cases, the most effective approach was collaborative problem-solving through dialogue: analyzing the observed behavior, narrowing down possible causes, challenging proposed solutions, and refining the implementation step by step. Rather than relying on the agent to solve every problem independently, I used it as a development partner whose output required evaluation, direction, and occasional correction.
 
 ### Iterative Development and Evaluation
 
